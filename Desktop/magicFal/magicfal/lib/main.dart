@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:magicfal/base/base_utility/utility.dart';
 import 'package:magicfal/product/splash_screen.dart';
 
 void main() {
@@ -10,7 +12,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      theme: ThemeData(
+          appBarTheme: AppBarTheme(
+        centerTitle: true,
+        iconTheme: IconThemeData(color: ColorUtility.mainthemeColor),
+        titleTextStyle: titleTextstyle(),
+        backgroundColor: ColorUtility.transparent,
+      )),
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: SplashScreen(),
       ),
