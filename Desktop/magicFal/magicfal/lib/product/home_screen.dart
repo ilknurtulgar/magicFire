@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:magicfal/base/base_utility/utility.dart';
 import 'package:magicfal/product/result_screen.dart';
+
+import '../core/base/util/base_utility.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);

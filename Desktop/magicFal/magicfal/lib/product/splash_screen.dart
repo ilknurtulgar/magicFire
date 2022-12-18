@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:magicfal/base/base_utility/utility.dart';
 import 'package:magicfal/product/home_screen.dart';
+
+import '../core/base/util/base_utility.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

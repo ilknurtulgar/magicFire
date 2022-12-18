@@ -1,79 +1,56 @@
 import 'package:flutter/material.dart';
-import 'package:magicfal/base/base_utility/utility.dart';
-import 'package:magicfal/product/icon_button.dart';
-import 'package:magicfal/product/send_button.dart';
+import 'package:get/get.dart';
+
+import 'package:magicfal/companent/icon_button.dart';
+import 'package:magicfal/companent/send_button.dart';
+
+import '../service/controller.dart';
 
 class ResultScreen extends StatelessWidget {
-  const ResultScreen({Key? key}) : super(key: key);
+  ResultScreen({Key? key}) : super(key: key);
+
 // 11 tane kart ekranı olacak her birinin görüntüsü aynı özellikleri farklı
+  Controller controller = Get.put(Controller());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Tarott"), leading: IconsButton()),
       body: Column(
         children: [
-          sizedbox(),
-          Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-            Padding(
-              padding: const EdgeInsets.only(),
-              child: cardbox(),
+          Expanded(
+            flex: 7,
+            child: GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                mainAxisSpacing: 5,
+              ),
+              itemBuilder: (context, index) {
+                return card(index);
+              },
+              itemCount: controller.uiData.length,
             ),
-            Padding(
-              padding: const EdgeInsets.only(),
-              child: cardbox(),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(),
-              child: cardbox(),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(),
-              child: cardbox(),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(),
-              child: cardbox(),
-            ),
-          ]),
-          sizedbox(),
-          Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-            Padding(
-              padding: const EdgeInsets.only(),
-              child: cardbox(),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(),
-              child: cardbox(),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(),
-              child: cardbox(),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(),
-              child: cardbox(),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(),
-              child: cardbox(),
-            ),
-          ]),
-          sizedbox(),
-          Padding(
-            padding: const EdgeInsets.only(),
-            child: cardbox(),
           ),
-          sizedbox(),
           SendButton(),
         ],
       ),
     );
   }
 
-  Container cardbox() {
-    return Container(
-        height: 100,
-        width: 70,
-        child: Image(image: assetImage(ImageUtility.backgroundtarotimage)));
+  Obx card(int index) {
+    return Obx(
+      () => InkWell(
+        onTap: () {
+          controller.changedColor();
+        },
+        child: Container(
+            height: 100,
+            width: 70,
+            color: controller.getColor,
+            child:
+                Image(image: AssetImage("${controller.uiData[index].backui}"))),
+      ),
+    );
   }
 }
+
+// Image(image: AssetImage("${controller.getAssetImage}"))),

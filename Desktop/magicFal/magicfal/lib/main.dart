@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:magicfal/base/base_utility/utility.dart';
 import 'package:magicfal/product/splash_screen.dart';
+
+import 'core/base/util/base_utility.dart';
 
 void main() {
   runApp(const MyApp());
