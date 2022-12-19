@@ -24,7 +24,7 @@ class ResultScreen extends StatelessWidget {
                 mainAxisSpacing: 5,
               ),
               itemBuilder: (context, index) {
-                return card(index);
+                return card();
               },
               itemCount: controller.uiData.length,
             ),
@@ -35,21 +35,24 @@ class ResultScreen extends StatelessWidget {
     );
   }
 
-  InkWell card(int index) {
-    return InkWell(
-      onTap: () {
-        print(index.toString());
-        controller.changedColor();
-      },
-      child: Container(
-          height: 100,
-          width: 70,
-          color: controller.getColor,
-          child: Obx(
-            () => Image(image: AssetImage("${controller.getAssetImage}")),
-          )),
+  Obx card() {
+    return Obx(
+      () => InkWell(
+        onTap: () {
+          //  print(index.toString());
+          controller.changedColor();
+        },
+        child: controller.getImage,
+      ),
     );
   }
 }
 //${controller.uiData[index].backui}
 // Image(image: AssetImage("${controller.getAssetImage}"))),
+/*: Container(
+          height: 100,
+          width: 70,
+          //  color: controller.getColor,
+          child: Obx(
+            () => Image(image: AssetImage("${controller.getAssetImage}")),
+          )),*/

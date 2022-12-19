@@ -5,6 +5,7 @@ class PaddingUtility {}
 class ImageUtility {
   static String cjimage = "assets/image/cj.webp";
   static String backgroundtarotimage = "assets/image/arkaplan.jpg";
+  static String cjkimage = "assets/image/cj1.png";
 }
 
 class ColorUtility {

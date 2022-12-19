@@ -105,8 +105,8 @@ class Controller extends GetxController {
     }
   }
 
-  AssetImage get getAssetImage => selectedindex.value == 0
-      ? AssetImage(ImageUtility.backgroundtarotimage)
-      : AssetImage(ImageUtility.cjimage);
-  Color get getColor => selectedindex.value == 0 ? Colors.blue : Colors.black;
+  Image get getImage => selectedindex.value == 0
+      ? Image(image: AssetImage(ImageUtility.backgroundtarotimage))
+      : Image(image: AssetImage(ImageUtility.cjkimage));
+  // Color get getColor => selectedindex.value == 0 ? Colors.blue : Colors.black;
 }
