@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:magicfal/model/ui_data.dart';
 
+import '../core/base/util/base_utility.dart';
+
 class Controller extends GetxController {
-  var datamodel = <UiData>[].obs;
+  // var datamodel = <UiData>[].obs;
 
   List<UiData> uiData = [
     UiData(
@@ -91,8 +93,10 @@ class Controller extends GetxController {
         backui: "assets/image/arkaplan.jpg",
         id: 12)
   ];
+  List data = [].obs;
 
   final selectedindex = 0.obs;
+
   void changedColor() {
     if (selectedindex.value == 1) {
       selectedindex.value = 0;
@@ -101,8 +105,8 @@ class Controller extends GetxController {
     }
   }
 
-/*AssetImage get getAssetImage => selectedindex.value == 0
+  AssetImage get getAssetImage => selectedindex.value == 0
       ? AssetImage(ImageUtility.backgroundtarotimage)
-      : AssetImage(ImageUtility.cjimage);*/
+      : AssetImage(ImageUtility.cjimage);
   Color get getColor => selectedindex.value == 0 ? Colors.blue : Colors.black;
 }

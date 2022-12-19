@@ -9,7 +9,6 @@ import '../service/controller.dart';
 class ResultScreen extends StatelessWidget {
   ResultScreen({Key? key}) : super(key: key);
 
-// 11 tane kart ekranı olacak her birinin görüntüsü aynı özellikleri farklı
   Controller controller = Get.put(Controller());
   @override
   Widget build(BuildContext context) {
@@ -36,21 +35,21 @@ class ResultScreen extends StatelessWidget {
     );
   }
 
-  Obx card(int index) {
-    return Obx(
-      () => InkWell(
-        onTap: () {
-          controller.changedColor();
-        },
-        child: Container(
-            height: 100,
-            width: 70,
-            color: controller.getColor,
-            child:
-                Image(image: AssetImage("${controller.uiData[index].backui}"))),
-      ),
+  InkWell card(int index) {
+    return InkWell(
+      onTap: () {
+        print(index.toString());
+        controller.changedColor();
+      },
+      child: Container(
+          height: 100,
+          width: 70,
+          color: controller.getColor,
+          child: Obx(
+            () => Image(image: AssetImage("${controller.getAssetImage}")),
+          )),
     );
   }
 }
-
+//${controller.uiData[index].backui}
 // Image(image: AssetImage("${controller.getAssetImage}"))),
