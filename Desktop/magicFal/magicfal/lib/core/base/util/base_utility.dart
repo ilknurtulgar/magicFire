@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-class PaddingUtility {}
-
 class ImageUtility {
   static String cjimage = "assets/image/cj.webp";
   static String backgroundtarotimage = "assets/image/arkaplan.jpg";
@@ -29,7 +27,7 @@ class IconUtility {
   static Icon homebackiconbutton = Icon(Icons.arrow_back_ios);
 }
 
-SizedBox sizedbox() => SizedBox(height: 45, width: 15);
+SizedBox sizedbox() => SizedBox(height: 30, width: 15);
 
 AssetImage assetImage(image) {
   return AssetImage(image);

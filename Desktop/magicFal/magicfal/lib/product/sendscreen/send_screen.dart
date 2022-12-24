@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:magicfal/companent/button/icon_button.dart';
+import 'package:magicfal/core/base/util/base_utility.dart';
+import 'package:magicfal/product/homescreen/home_screen.dart';
+import 'package:magicfal/product/resultscreen/result_screen.dart';
 
 import 'package:magicfal/service/controller.dart';
 
@@ -20,16 +24,17 @@ class _SendScreenState extends State<SendScreen> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(appText),
-        ),
-        body: ListTile(
-          leading: Icon(Icons.message),
-          title: Image(
-            fit: BoxFit.fill,
-            image: NetworkImage("${widget.url}"),
+        appBar: AppBar(title: Text(appText), leading: backicon()),
+        body: SingleChildScrollView(
+          padding: EdgeInsets.all(10),
+          child: ListTile(
+            leading: Icon(Icons.message),
+            title: Image(
+              fit: BoxFit.fill,
+              image: NetworkImage("${widget.url}"),
+            ),
+            subtitle: Text("${widget.eminem}"),
           ),
-          subtitle: Text("${widget.eminem}"),
         )
         /*ListView.builder(
         itemBuilder: (context, index) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:magicfal/product/splash_screen.dart';
+import 'package:magicfal/product/splashscreen/splash_screen.dart';
 
 import 'core/base/util/base_utility.dart';
 
@@ -17,7 +17,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           appBarTheme: AppBarTheme(
         centerTitle: true,
-        iconTheme: IconThemeData(color: ColorUtility.mainthemeColor),
+
+        // iconTheme: IconThemeData(color: ColorUtility.mainthemeColor),
         titleTextStyle: titleTextstyle(),
         backgroundColor: ColorUtility.transparent,
       )),

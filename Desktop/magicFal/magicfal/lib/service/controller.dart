@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:magicfal/model/person_data.dart';
 import 'package:magicfal/model/ui_data.dart';
+import 'package:magicfal/product/homescreen/home_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/base/util/base_utility.dart';
 
@@ -93,11 +96,32 @@ class Controller extends GetxController {
         backui: "assets/image/arkaplan.jpg",
         id: 12)
   ];
+  /////////////////
+  ////
+  //biri true ken diğerini false yap idyeceğim
   List data = [].obs;
-
   final selectedindex = 0.obs;
+  final obscuretext = true.obs;
+  final turnvalue = true.obs;
+//////////////
+  void changedObsecure() {
+    if (obscuretext.value == false) {
+      obscuretext.value = true;
 
-  void changedColor() {
+      print("false");
+    } else {
+      obscuretext.value = false;
+
+      print("trur");
+    }
+    if (turnvalue.value == true) {}
+  }
+
+/////////
+
+//  TextEditingController get getTextEditingController => nameCont.valu
+//////
+  void changedIcon() {
     if (selectedindex.value == 1) {
       selectedindex.value = 0;
     } else {
@@ -105,8 +129,55 @@ class Controller extends GetxController {
     }
   }
 
+//////////////////////////////////////////////////
+  TextEditingController nameCont = TextEditingController();
+  TextEditingController passCont = TextEditingController();
+  //var sharedPreferences=await SharedPreferences.GetInstance();
+
+  Future getValidateData() async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+    var obtainedEmail = sharedPreferences.getString("email");
+    // chang(obtainedEmail);
+  }
+
+  /*void chang(obtianedEmail) {
+    finalEmail.value = obtianedEmail;
+  }*/
+/////////////////////////////////////////
+  void checkList() {
+    if (personList.contains(nameCont.text.trim())) {
+      int index = personList.indexOf(nameCont.text.trim());
+
+      if (passwordList[index] == passCont.text) {
+        Get.to(HomeScreen(), arguments: {"name": nameCont.text.trim()});
+      } else {
+        Get.snackbar("Parola yanliş", "unuttun mu?",
+            snackPosition: SnackPosition.BOTTOM);
+      }
+    } else if ((personList.contains(nameCont.text.trim()) != true &&
+        passwordList.contains(passCont.text.trim()) != true)) {
+      Get.snackbar(
+          "ikiside yanliş ya da kutulari doldurmamişsiniz", "unuttun mu? ",
+          snackPosition: SnackPosition.BOTTOM);
+    } else {
+      Get.snackbar("gmail yanliş", "tekrar deneyiniz",
+          snackPosition: SnackPosition.BOTTOM);
+    }
+  }
+
+////////////////////////////////
+  Icon get getIcon => obscuretext.value == true
+      ? Icon(Icons.visibility)
+      : Icon(Icons.visibility_off);
+
   Image get getImage => selectedindex.value == 0
       ? Image(image: AssetImage(ImageUtility.backgroundtarotimage))
       : Image(image: AssetImage(ImageUtility.cjkimage));
   // Color get getColor => selectedindex.value == 0 ? Colors.blue : Colors.black;
 }
+
+/* else (personList.contains(nameCont.text) != nameCont.text &&
+        passwordList.indexOf(passCont.text) != passCont.text) {
+      Get.snackbar("ikiside yanliş", "unuttun mu?",
+          snackPosition: SnackPosition.BOTTOM);*/

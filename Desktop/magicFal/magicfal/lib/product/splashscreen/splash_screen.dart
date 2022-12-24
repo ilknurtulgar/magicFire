@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:magicfal/product/home_screen.dart';
+import 'package:magicfal/product/loginscreen/login_screen.dart';
 
-import '../core/base/util/base_utility.dart';
+import '../../core/base/util/base_utility.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: seconds), () async {
-      Get.to(() => HomeScreen());
+      Get.to(() => LoginScreen());
     });
   }
 

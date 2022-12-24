@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:magicfal/companent/button/button.dart';
 
-import 'package:magicfal/companent/icon_button.dart';
-import 'package:magicfal/companent/send_button.dart';
+import 'package:magicfal/companent/button/icon_button.dart';
+import 'package:magicfal/core/base/util/base_utility.dart';
+import 'package:magicfal/product/homescreen/home_screen.dart';
+import 'package:magicfal/product/resultscreen/send_button.dart';
 
-import '../service/controller.dart';
+import '../../service/controller.dart';
 
 class ResultScreen extends StatelessWidget {
   ResultScreen({Key? key}) : super(key: key);
@@ -13,9 +16,10 @@ class ResultScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Tarott"), leading: IconsButton()),
+      //  appBar: AppBar(title: Text("Tarott"), leading: backicon()),
       body: Column(
         children: [
+          SizedBox(height: 10),
           Expanded(
             flex: 7,
             child: GridView.builder(
@@ -24,12 +28,13 @@ class ResultScreen extends StatelessWidget {
                 mainAxisSpacing: 5,
               ),
               itemBuilder: (context, index) {
+                final item = controller.uiData[index];
                 return card();
               },
               itemCount: controller.uiData.length,
             ),
           ),
-          SendButton(),
+          Buttons(button: buttonModelsend),
         ],
       ),
     );
@@ -39,20 +44,19 @@ class ResultScreen extends StatelessWidget {
     return Obx(
       () => InkWell(
         onTap: () {
-          //  print(index.toString());
-          controller.changedColor();
+          controller.changedIcon();
         },
         child: controller.getImage,
       ),
     );
   }
 }
-//${controller.uiData[index].backui}
-// Image(image: AssetImage("${controller.getAssetImage}"))),
-/*: Container(
-          height: 100,
-          width: 70,
-          //  color: controller.getColor,
-          child: Obx(
-            () => Image(image: AssetImage("${controller.getAssetImage}")),
-          )),*/
+
+IconsButton backicon() {
+  return IconsButton(
+    onTap: () {
+      Get.to(HomeScreen());
+    },
+    icon: IconUtility.homebackiconbutton,
+  );
+}
