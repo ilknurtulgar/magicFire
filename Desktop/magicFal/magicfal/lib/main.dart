@@ -17,10 +17,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           appBarTheme: AppBarTheme(
         centerTitle: true,
-
-        // iconTheme: IconThemeData(color: ColorUtility.mainthemeColor),
         titleTextStyle: titleTextstyle(),
-        backgroundColor: ColorUtility.transparent,
+        backgroundColor: ColorUtility.cardColor,
       )),
       debugShowCheckedModeBanner: false,
       home: Scaffold(

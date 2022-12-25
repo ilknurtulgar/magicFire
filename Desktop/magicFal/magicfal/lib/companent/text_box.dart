@@ -6,17 +6,17 @@ class TextBox extends StatefulWidget {
   TextBox({
     Key? key,
     required this.obscure,
+    required this.prefixIcon,
     this.suffixIcon,
     this.labelText,
     this.hintText,
     required this.cont,
-    required this.onChanged,
   }) : super(key: key);
   String? labelText;
   String? hintText;
-  Function(String)? onChanged;
   Widget? suffixIcon;
   bool obscure;
+  Widget prefixIcon;
 
   TextEditingController? cont;
   @override
@@ -24,19 +24,18 @@ class TextBox extends StatefulWidget {
 }
 
 class _TextBoxState extends State<TextBox> {
-  Controller controller = Get.put(Controller());
+  Controller controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: widget.cont,
-      onChanged: widget.onChanged,
       obscureText: widget.obscure,
       decoration: InputDecoration(
           labelText: widget.labelText,
           border: OutlineInputBorder(),
           suffixIcon: widget.suffixIcon,
-          prefixIcon: Icon(Icons.mail_outline_outlined),
+          prefixIcon: widget.prefixIcon,
           hintText: widget.hintText),
     );
   }

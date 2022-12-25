@@ -3,14 +3,14 @@ import 'package:get/get.dart';
 import 'package:magicfal/companent/button/icon_button.dart';
 import 'package:magicfal/core/base/util/base_utility.dart';
 import 'package:magicfal/product/homescreen/home_screen.dart';
-import 'package:magicfal/product/resultscreen/result_screen.dart';
 
 import 'package:magicfal/service/controller.dart';
 
 class SendScreen extends StatefulWidget {
   String? url;
-  String? eminem;
-  SendScreen({required this.eminem, required this.url});
+  String? subtitle;
+  String? name;
+  SendScreen({required this.subtitle, required this.url, required this.name});
 
   @override
   State<SendScreen> createState() => _SendScreenState();
@@ -20,35 +20,33 @@ class _SendScreenState extends State<SendScreen> {
   Controller controller = Get.find();
 
   @override
-  String appText = "Tarot Faliim";
-
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text(appText), leading: backicon()),
+        appBar: AppBar(title: Text("${widget.name}"), leading: backicon()),
         body: SingleChildScrollView(
-          padding: EdgeInsets.all(10),
+          padding: _widgetUtility.padding,
           child: ListTile(
-            leading: Icon(Icons.message),
+            leading: IconUtility.sendIcon,
             title: Image(
               fit: BoxFit.fill,
               image: NetworkImage("${widget.url}"),
             ),
-            subtitle: Text("${widget.eminem}"),
+            subtitle: Text("${widget.subtitle}", style: sendTextStyle()),
           ),
-        )
-        /*ListView.builder(
-        itemBuilder: (context, index) {
-          return ListTile(
-            leading: Icon(Icons.message),
-            title: Image(
-              fit: BoxFit.fill,
-              image: NetworkImage("${controller.uiData[index].ui}"),
-            ),
-            subtitle: Text("${controller.uiData[index].text}"),
-          );
-        },
-        itemCount: controller.uiData.length,
-      ),*/
-        );
+        ));
   }
+}
+
+class _widgetUtility {
+  String appText = "Tarot Faliim";
+  static const EdgeInsets padding = EdgeInsets.all(10);
+}
+
+IconsButton backicon() {
+  return IconsButton(
+    onTap: () {
+      Get.to(HomeScreen());
+    },
+    icon: IconUtility.homebackiconbutton,
+  );
 }

@@ -24,8 +24,8 @@ class SharedManagerController extends GetxController {
   }
 
   Future getDefaultValue() async {
-    onChangenameValue(getString(SharedKey.name) ?? "a");
-    onChangepassValue(getString(SharedKey.pass) ?? "a");
+    onChangenameValue(getString(SharedKey.name) ?? "");
+    onChangepassValue(getString(SharedKey.pass) ?? "");
   }
 
   void onChangenameValue(String value) {

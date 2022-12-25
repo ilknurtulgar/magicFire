@@ -1,62 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:magicfal/companent/button/button.dart';
 
-import 'package:magicfal/companent/button/icon_button.dart';
 import 'package:magicfal/core/base/util/base_utility.dart';
-import 'package:magicfal/product/homescreen/home_screen.dart';
-import 'package:magicfal/product/resultscreen/send_button.dart';
+import 'package:magicfal/product/sendscreen/send_screen.dart';
 
 import '../../service/controller.dart';
 
 class ResultScreen extends StatelessWidget {
   ResultScreen({Key? key}) : super(key: key);
 
-  Controller controller = Get.put(Controller());
+  Controller controller = Get.find();
+  String titleText = "Bir tane seçiniz";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //  appBar: AppBar(title: Text("Tarott"), leading: backicon()),
+      appBar: AppBar(
+        title: Text(titleText),
+      ),
       body: Column(
         children: [
-          SizedBox(height: 10),
+          _sizedbox(),
           Expanded(
             flex: 7,
             child: GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
-                mainAxisSpacing: 5,
+                mainAxisSpacing: 4,
               ),
               itemBuilder: (context, index) {
-                final item = controller.uiData[index];
-                return card();
+                return card(index);
               },
               itemCount: controller.uiData.length,
             ),
           ),
-          Buttons(button: buttonModelsend),
+          sizedbox(),
         ],
       ),
     );
   }
 
-  Obx card() {
-    return Obx(
-      () => InkWell(
-        onTap: () {
-          controller.changedIcon();
-        },
-        child: controller.getImage,
+  GestureDetector card(int index) {
+    return GestureDetector(
+      onTap: () {
+        gotoPage(index);
+      },
+      child: GridTile(
+        child: Image(image: AssetImage(ImageUtility.backgroundtarotimage)),
       ),
     );
   }
-}
 
-IconsButton backicon() {
-  return IconsButton(
-    onTap: () {
-      Get.to(HomeScreen());
-    },
-    icon: IconUtility.homebackiconbutton,
-  );
+  SizedBox _sizedbox() => SizedBox(height: 40);
+
+  gotoPage(index) {
+    Get.to(SendScreen(
+      name: "${controller.uiData[index].name}",
+      subtitle: "${controller.uiData[index].text}",
+      url: "${controller.uiData[index].ui}",
+    ));
+  }
 }
