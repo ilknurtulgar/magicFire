@@ -114,7 +114,6 @@ class Controller extends GetxController {
 
       print("trur");
     }
-    if (turnvalue.value == true) {}
   }
 
 /////////

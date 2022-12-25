@@ -32,6 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           TextBox(
+              obscure: false,
               onChanged: ((value) {
                 _manager.onChangenameValue(value);
               }),
@@ -39,13 +40,17 @@ class _LoginScreenState extends State<LoginScreen> {
               hintText: "abcd@gmail.com",
               labelText: "Gmail"),
           sizedbox(),
-          TextBox(
-            onChanged: ((value) {
-              _manager.onChangepassValue(value);
-            }),
-            cont: _manager.passCont,
-            hintText: "12345",
-            labelText: "Parola",
+          Obx(
+            () => TextBox(
+              obscure: controller.obscuretext.value,
+              suffixIcon: obscurepass(),
+              onChanged: ((value) {
+                _manager.onChangepassValue(value);
+              }),
+              cont: _manager.passCont,
+              hintText: "12345",
+              labelText: "Parola",
+            ),
           ),
           sizedbox(),
           richText(),
@@ -56,6 +61,14 @@ class _LoginScreenState extends State<LoginScreen> {
         ],
       ),
     );
+  }
+
+  IconButton obscurepass() {
+    return IconButton(
+        icon: controller.getIcon,
+        onPressed: () {
+          controller.changedObsecure();
+        });
   }
 
   RichText richText() {

@@ -5,6 +5,8 @@ import 'package:magicfal/service/controller.dart';
 class TextBox extends StatefulWidget {
   TextBox({
     Key? key,
+    required this.obscure,
+    this.suffixIcon,
     this.labelText,
     this.hintText,
     required this.cont,
@@ -13,6 +15,8 @@ class TextBox extends StatefulWidget {
   String? labelText;
   String? hintText;
   Function(String)? onChanged;
+  Widget? suffixIcon;
+  bool obscure;
 
   TextEditingController? cont;
   @override
@@ -24,22 +28,16 @@ class _TextBoxState extends State<TextBox> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => TextField(
-        controller: widget.cont,
-        onChanged: widget.onChanged,
-        obscureText: controller.obscuretext.value,
-        decoration: InputDecoration(
-            labelText: widget.labelText,
-            border: OutlineInputBorder(),
-            suffixIcon: IconButton(
-                icon: controller.getIcon,
-                onPressed: () {
-                  controller.changedObsecure();
-                }),
-            prefixIcon: Icon(Icons.mail_outline_outlined),
-            hintText: widget.hintText),
-      ),
+    return TextField(
+      controller: widget.cont,
+      onChanged: widget.onChanged,
+      obscureText: widget.obscure,
+      decoration: InputDecoration(
+          labelText: widget.labelText,
+          border: OutlineInputBorder(),
+          suffixIcon: widget.suffixIcon,
+          prefixIcon: Icon(Icons.mail_outline_outlined),
+          hintText: widget.hintText),
     );
   }
 }
