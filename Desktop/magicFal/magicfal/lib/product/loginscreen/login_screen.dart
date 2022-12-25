@@ -7,8 +7,8 @@ import 'package:magicfal/product/loginscreen/login_box.dart';
 
 import 'package:magicfal/companent/text_box.dart';
 import 'package:magicfal/core/base/util/base_utility.dart';
-import 'package:magicfal/product/resultscreen/result_screen.dart';
 import 'package:magicfal/service/controller.dart';
+import 'package:magicfal/service/shared_manager_controller.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -19,6 +19,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   Controller controller = Get.put(Controller());
+  SharedManagerController _manager = Get.put(SharedManagerController());
   String apptextlogin = "Login";
   @override
   Widget build(BuildContext context) {
@@ -31,12 +32,18 @@ class _LoginScreenState extends State<LoginScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           TextBox(
-              cont: controller.nameCont,
+              onChanged: ((value) {
+                _manager.onChangenameValue(value);
+              }),
+              cont: _manager.nameCont,
               hintText: "abcd@gmail.com",
               labelText: "Gmail"),
           sizedbox(),
           TextBox(
-            cont: controller.passCont,
+            onChanged: ((value) {
+              _manager.onChangepassValue(value);
+            }),
+            cont: _manager.passCont,
             hintText: "12345",
             labelText: "Parola",
           ),

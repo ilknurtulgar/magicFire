@@ -8,9 +8,11 @@ class TextBox extends StatefulWidget {
     this.labelText,
     this.hintText,
     required this.cont,
+    required this.onChanged,
   }) : super(key: key);
   String? labelText;
   String? hintText;
+  Function(String)? onChanged;
 
   TextEditingController? cont;
   @override
@@ -19,12 +21,13 @@ class TextBox extends StatefulWidget {
 
 class _TextBoxState extends State<TextBox> {
   Controller controller = Get.put(Controller());
-  final selectionControl = true;
+
   @override
   Widget build(BuildContext context) {
     return Obx(
       () => TextField(
         controller: widget.cont,
+        onChanged: widget.onChanged,
         obscureText: controller.obscuretext.value,
         decoration: InputDecoration(
             labelText: widget.labelText,
@@ -33,7 +36,6 @@ class _TextBoxState extends State<TextBox> {
                 icon: controller.getIcon,
                 onPressed: () {
                   controller.changedObsecure();
-                  selectionControl != selectionControl;
                 }),
             prefixIcon: Icon(Icons.mail_outline_outlined),
             hintText: widget.hintText),
