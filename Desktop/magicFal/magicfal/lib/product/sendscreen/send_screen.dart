@@ -29,7 +29,7 @@ class _SendScreenState extends State<SendScreen> {
             leading: IconUtility.sendIcon,
             title: Image(
               fit: BoxFit.fill,
-              image: NetworkImage("${widget.url}"),
+              image: AssetImage("${widget.url}"),
             ),
             subtitle: Text("${widget.subtitle}", style: sendTextStyle()),
           ),

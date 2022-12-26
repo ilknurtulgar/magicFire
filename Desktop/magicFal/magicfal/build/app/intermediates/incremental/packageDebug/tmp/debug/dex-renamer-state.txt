@@ -1,4 +1,4 @@
-#Sun Dec 25 22:57:33 TRT 2022
+#Mon Dec 26 18:41:40 TRT 2022
 base.0=C\:\\Users\\ilknu\\Desktop\\magicFal\\magicfal\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
