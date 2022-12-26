@@ -37,7 +37,7 @@ class Controller extends GetxController {
         text:
             "Yaratıcı, hevesli, kendine güvenen ve cesur olmak anlamına gelir. Yaratıcı olmak için yeni bir yaklaşım benimsemeniz, yeni bir kendini ifade alanı bulmanız, bir çözüm bulmanız, yeni bir yöne gitmenizi vurguluyor. Asa Prensi, hiç ummadığınız büyüklükte imkanlar ve hayatınıza mutluluk katacak tecrübelerin sizi beklediğini müjdeler. ",
         name: "Asa Prensi",
-        ui: "assets/image/5magic.jpg",
+        ui: "assets/image/5magic.png",
         id: 5),
     UiData(
         text:
@@ -58,7 +58,7 @@ class Controller extends GetxController {
         text:
             "Bir tarot okumasında ay kartı düz olduğunda, aldatma, hile, hayal kırıklığı, hata, kaygı, tehlike ve çifte ilişkiyi sembolize eder. Kart, duygusal veya zihinsel denemeler geçirdiğiniz anlamına gelir. Ay kartı bir Tarot okumasında ters çevrildiğinde, hasar yapılmadan önce aldatmanın keşfedilmesi, hataların önlenmesi ve birisinden yararlanma sembolize eder. Bir Tarot aşk okumasındaki ay kartı güvensizliklerden biridir. ",
         name: " Ay Kartı",
-        ui: "assets/image/8magic.jpg",
+        ui: "assets/image/magic8.jpg",
         id: 8),
     UiData(
         text:
@@ -84,7 +84,7 @@ class Controller extends GetxController {
     UiData(
         text: "Şansına küs, Boş kartı çıktı",
         name: "hehe",
-        ui: "assets/image/12magic.jpg",
+        ui: "assets/image/12cj.jpg",
         backui: "assets/image/arkaplan.jpg",
         id: 12)
   ];

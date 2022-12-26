@@ -28,10 +28,13 @@ class _SendScreenState extends State<SendScreen> {
           child: ListTile(
             leading: IconUtility.sendIcon,
             title: Image(
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
               image: AssetImage("${widget.url}"),
             ),
-            subtitle: Text("${widget.subtitle}", style: sendTextStyle()),
+            subtitle: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("${widget.subtitle}", style: sendTextStyle()),
+            ),
           ),
         ));
   }
